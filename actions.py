@@ -2,7 +2,7 @@ import random
 from models import Player, Monster, Object
 
 
-def cont2():
+def cont():
     move_on = input('')
 
 
@@ -43,22 +43,6 @@ def choose_your_stats():
     return player1
 
 
-def monster_creation():
-    monster_speed = random.randint(10, 20)
-    monster_strength = random.randint(10, 30)
-    monster_health = random.randint(15, 50)
-    monster_speed2 = random.randint(20, 40)
-    monster_strength2 = random.randint(10, 30)
-    monster_health2 = random.randint(15, 50)
-    monster_speed3 = random.randint(15, 30)
-    monster_strength3 = random.randint(10, 30)
-    monster_health3 = random.randint(15, 50)
-    monster1 = Monster(monster_health, monster_strength, monster_speed)
-    monster2 = Monster(monster_health2, monster_strength2, monster_speed2)
-    monster3 = Monster(monster_health3, monster_strength3, monster_speed3)
-    return monster1, monster2, monster3
-
-
 def m_creation():
     monster_speed = random.randint(5, 50)
     monster_strength = random.randint(5, 40)
@@ -93,20 +77,20 @@ def confrontation(player, monster):
             goes_first = 'monster'
     print(f'\nMonster stats:\nHealth: {monster.health}\nSpeed: {monster.speed}\nStrength: {monster.strength}')
     print(f'\nPlayer stats:\nHealth: {player.health}\nSpeed: {player.speed}\nStrength: {player.strength}')
-    cont2()
+    cont()
     print(f"\n{goes_first} attacked first.")
-    cont2()
+    cont()
     if goes_first == player.name:
         while (player.health > 0) and (monster.health > 0):
             monster.health -= player.strength
             print(f'Monster lost {player.strength} points of health!')
             print(f'Monster has {monster.health} points of health left.')
-            cont2()
+            cont()
             if monster.health > 0:
                 player.health -= monster.strength
                 print(f'{player.name} lost {monster.strength} points of health!')
                 print(f'{player.name} has {player.health} points of health left.')
-                cont2()
+                cont()
             else:
                 break
     else:
@@ -114,12 +98,12 @@ def confrontation(player, monster):
             player.health -= monster.strength
             print(f'{player.name} lost {monster.strength} points of health!')
             print(f'{player.name} has {player.health} points of health left.')
-            cont2()
+            cont()
             if player.health > 0:
                 monster.health -= player.strength
                 print(f'Monster lost {player.strength} points of health!\n')
                 print(f'Monster has {monster.health} points of health left.')
-                cont2()
+                cont()
             else:
                 break
     if player.health <= 0:
@@ -170,9 +154,4 @@ def item_pickup(s, gs, r, gr, b, gb):
             print('You chose to walk away.')
     else:
         print('You did not find an item :(')
-
-
-def cont():
-    move_on = input('Press Enter to continue')
-
 
