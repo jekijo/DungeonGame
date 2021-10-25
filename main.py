@@ -1,4 +1,4 @@
-from actions import intro, choose_your_stats, objects, confrontation, item_pickup, cont, cont2, m_creation
+from actions import intro, choose_your_stats, objects, confrontation, item_pickup, cont, m_creation
 
 
 game_score = 0
@@ -14,7 +14,7 @@ while game_on:
         damage_count = monster1.health
         (item1, item2, item3, item4, item5, item6) = objects()
         print(f"\nConfrontation number {current_round}\n----------------------\n")
-        cont2()
+        cont()
         game_on = confrontation(player1, monster1)
         if game_on == 'dead':
             break
@@ -22,27 +22,27 @@ while game_on:
         if item_found == 'gs':
             player1.health += item2.effect
             print(f"Health changed by {item2.effect}. Player health is now: {player1.health}")
-            cont2()
+            cont()
         if item_found == 'gr':
             player1.strength += item4.effect
             print(f"Strength changed by {item4.effect}. Player strength is now: {player1.strength}")
-            cont2()
+            cont()
         if item_found == 'gb':
             player1.speed += item6.effect
             print(f"Speed changed by {item6.effect}. Player speed is now: {player1.speed}")
-            cont2()
+            cont()
         if item_found == 'b':
             player1.speed += item5.effect
             print(f"Speed changed by {item5.effect}. Player speed is now: {player1.speed}")
-            cont2()
+            cont()
         if item_found == 'r':
             player1.strength += item3.effect
             print(f"Strength changed by {item3.effect}. Player strength is now: {player1.strength}")
-            cont2()
+            cont()
         if item_found == 's':
             player1.health += item1.effect
             print(f"Health changed by {item1.effect}. Player health is now: {player1.health}")
-            cont2()
+            cont()
         if player1.health <= 0:
             print(f'{player1.name} has died. GAME OVER')
             break
